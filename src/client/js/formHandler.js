@@ -1,14 +1,18 @@
 function handleSubmit(event) {
     event.preventDefault()
 
-    let formText = document.getElementById('name').value
-    Client.checkForName(formText)
+    let article = document.getElementById('article').value;
 
-    fetch('http://localhost:8080/test')
-    .then(res => res.json())
-    .then(function(res) {
-        document.getElementById('results').innerHTML = res.message
-    })
+    if (Client.notEmpty(article) && Client.isUrl(article)) {
+        fetch(`http://localhost:3000/api?url=${article}`)
+        .then(res => res.json())
+        .then(res => Client.displayResult(res))
+        .catch(err => console.log(err));
+    }
+    else {
+        console.log("INPUT INVALID!");
+    }
+    
 }
 
 export { handleSubmit }

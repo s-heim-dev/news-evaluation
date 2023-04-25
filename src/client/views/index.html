@@ -24,14 +24,13 @@
         <main>
             <section>
                 <form class="" onsubmit="return Client.handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" placeholder="Name">
-                    <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
+                    <input id="article" type="text" name="input" value="" placeholder="URL to News Article...">
+                    <input type="submit" name="" value="request" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
                 </form>
             <section>
 
-            <section>
-                <strong>Form Results:</strong>
-                <div id="results"></div>
+            <section id="results">
+                <strong>Results:</strong>
             </section>
         </main>
 

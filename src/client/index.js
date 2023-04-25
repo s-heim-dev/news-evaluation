@@ -4,10 +4,13 @@ import './styles/footer.scss'
 import './styles/form.scss'
 import './styles/header.scss'
 
-import { checkForName } from './js/nameChecker'
+import { notEmpty, isUrl } from './js/urlChecker'
 import { handleSubmit } from './js/formHandler'
+import { displayResult } from './js/resultDisplay'
 
 export {
-    checkForName,
-    handleSubmit
+    handleSubmit,
+    notEmpty,
+    isUrl,
+    displayResult
 }
