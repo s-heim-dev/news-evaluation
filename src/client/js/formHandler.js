@@ -1,5 +1,5 @@
 function handleSubmit(event) {
-    event.preventDefault()
+    event.preventDefault();
 
     let article = document.getElementById('article').value;
 
@@ -7,10 +7,10 @@ function handleSubmit(event) {
         fetch(`http://localhost:3000/api?url=${article}`)
         .then(res => res.json())
         .then(res => Client.displayResult(res))
-        .catch(err => console.log(err));
+        .catch(err => Client.markUrlInputInfo(err));
     }
     else {
-        Client.markInvalidUrl();
+        Client.markUrlInputInfo("Invalid Input: Must be a URL starting with https:// or http://");
     }
     
 }

@@ -23,19 +23,26 @@
 
         <main>
             <section>
+                <h1>News Evaluation</h1>
+
+                <p>Enter a link to a news article to perform sentiment analysis.</p>
+            </section>
+
+            <section>
                 <form onsubmit="return Client.handleSubmit(event)">
                     <input id="article" type="text" name="input" value="" placeholder="URL to News Article...">
+                    <p class="error"></p>
                     <input type="submit" name="" value="Request Analysis" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
                 </form>
             <section>
 
             <section id="results">
-                <strong>Results:</strong>
+                <h2 class="hidden">Results:</h2>
             </section>
         </main>
 
         <footer>
-            <p>This is a footer</p>
+            <p>Analysis Results provided by <a href="https://www.meaningcloud.com" target="_blank">MeaningCloud</a></p>
         </footer>
 
         <script>

@@ -111,5 +111,3 @@ function translateElement(obj) {
         concept_list: obj.sentimented_concept_list
     }
 }
-
-export { translateElement }

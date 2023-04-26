@@ -6,11 +6,12 @@ import './styles/header.scss'
 
 import { notEmpty, isUrl } from './js/urlChecker'
 import { handleSubmit } from './js/formHandler'
-import { displayResult } from './js/resultDisplay'
+import { displayResult, markUrlInputInfo } from './js/resultDisplay'
 
 export {
     handleSubmit,
     notEmpty,
     isUrl,
-    displayResult
+    displayResult,
+    markUrlInputInfo
 }

@@ -1,5 +1,11 @@
 function displayResult(data) {
+    if (data.hasOwnProperty("msg")) {
+        markUrlInputInfo(data.msg);
+        return;
+    }
+
     const holder = document.getElementById("results");
+    holder.firstChild.classList.remove("hidden");
 
     const entries = document.createElement("entries");
     for (let key of Object.keys(data)) {
@@ -9,12 +15,20 @@ function displayResult(data) {
     }
 
     holder.appendChild(entries);
+
+    markUrlInputInfo(undefined  , false);
 }
 
-function markInvalidUrl() {
-    const element = document.getElementById("article");
+function markUrlInputInfo(msg, markError=true) {
+    const articleInput = document.getElementById("article");
 
-    element.style.borderColor = "red";
+    if (markError) {
+        articleInput.classList.add("error");
+        articleInput.nextElementSibling.innerHTML = msg;
+    }
+    else {
+        articleInput.classList.remove("error");
+    }
 }
 
-export { displayResult, markInvalidUrl }
+export { displayResult, markUrlInputInfo }
