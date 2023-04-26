@@ -10,7 +10,7 @@ function handleSubmit(event) {
         .catch(err => console.log(err));
     }
     else {
-        console.log("INPUT INVALID!");
+        Client.markInvalidUrl();
     }
     
 }

@@ -11,4 +11,10 @@ function displayResult(data) {
     holder.appendChild(entries);
 }
 
-export { displayResult}
+function markInvalidUrl() {
+    const element = document.getElementById("article");
+
+    element.style.borderColor = "red";
+}
+
+export { displayResult, markInvalidUrl }
