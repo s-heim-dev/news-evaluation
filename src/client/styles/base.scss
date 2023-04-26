@@ -1,14 +1,38 @@
+$baseColor: #545454;
+$border: 1px solid $baseColor;
+
 body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-}
+    min-height: 98vh;
+    margin: 10px 40px;
+    border: $border;
+    color: $baseColor;
 
-main {
-    flex: 2;
-}
-
-section {
-    max-width: 800px;
-    margin: 50px auto;
+    main {
+        flex: 2;
+    
+        section {
+            max-width: 800px;
+            margin: 50px auto;
+        }
+        
+        @media(max-width: 850px) {
+            section {
+                max-width: 500px;
+            }
+        }
+        
+        @media(max-width: 550px) {
+            section {
+                max-width: 300px;
+            }
+        }
+        
+        @media(max-width: 350px) {
+            section {
+                width: 80%;
+            }
+        }
+    }
 }
