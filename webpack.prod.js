@@ -1,5 +1,6 @@
-const path = require('path')
-const webpack = require('webpack')
+const path = require('path');
+const webpack = require('webpack');
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -33,8 +34,14 @@ module.exports = {
         new HtmlWebPackPlugin({
             template: "./src/client/views/index.html",
             filename: "./index.html",
+            favicon: "./assets/favicon.ico"
         }),
         new MiniCssExtractPlugin({ filename: "[name].css" }),
-        // new WorkboxPlugin.GenerateSW()
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: 'assets' }
+            ]
+        }),
+        new WorkboxPlugin.GenerateSW()
     ]
 }

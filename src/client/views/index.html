@@ -3,33 +3,23 @@
     <head>
         <meta charset="utf-8">
         <title>News Evaluation</title>
-        <link rel="stylesheet" href="/styles/resets.css">
-        <link rel="stylesheet" href="/styles/base.css">
-        <link rel="stylesheet" href="/styles/header.css">
-        <link rel="stylesheet" href="/styles/form.css">
-        <link rel="stylesheet" href="/styles/footer.css">
     </head>
 
     <body>
 
         <header>
             <div>
-                Logo
+                <img src="logo.png" width="50px">
             </div>
             <div>
-                navigation
+                <h1>News Evaluation</h1>
             </div>
         </header>
 
         <main>
             <section>
-                <h1>News Evaluation</h1>
-
-                <p>Enter a link to a news article to perform sentiment analysis.</p>
-            </section>
-
-            <section>
                 <form onsubmit="return Client.handleSubmit(event)">
+                    <p>Enter a link to a news article to perform sentiment analysis:</p>
                     <input id="article" type="text" name="input" value="" placeholder="URL to News Article...">
                     <p class="error"></p>
                     <input type="submit" name="" value="Request Analysis" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">

@@ -1,0 +1,13 @@
+@import "./base.scss";
+
+.result-holder {
+    margin: 5px 0;
+
+    div {
+        padding: 5px;
+    }
+
+    .dotted-border {
+        border: 1px dotted $baseColor;
+    }
+}

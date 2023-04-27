@@ -6,6 +6,10 @@ function getHtmlElement(element) {
     return element;
 }
 
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 function displayObject(obj, holder=document.createElement("div")) {
     holder.classList.add("result-holder");
 
@@ -14,29 +18,33 @@ function displayObject(obj, holder=document.createElement("div")) {
 
         if (obj[key] instanceof Object) {
             if (!(obj[key] instanceof Array) || obj[key].length > 0) {
+                const element = document.createElement("div");
                 if (isNaN(key)) {
                     const headline = document.createElement("h3");
-                    headline.innerHTML = key.replace("_list", "s:");
-                    //headline.classList.add("result-holder");
+                    headline.innerHTML = capitalize(key.replace("_list", "s:"));
                     
                     const results = displayObject(obj[key]);
                     results.classList.add("dotted-border");
 
+                    
                     element.appendChild(headline);
                     element.appendChild(results);
                 }
                 else {
                     displayObject(obj[key], element);
                 }
+                holder.appendChild(element);
             }
         }
         else {
             if (obj[key] != "") {
-                element.innerHTML = `${key}: ${obj[key]}`;
+                const element = document.createElement("div");
+                element.innerHTML = `${capitalize(key)}: <span>${obj[key]}</span>`;
+                holder.appendChild(element);
             } 
         }
         
-        holder.appendChild(element);
+        
     }
 
     return holder;
