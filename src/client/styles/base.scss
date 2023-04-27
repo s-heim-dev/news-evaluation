@@ -17,19 +17,37 @@ body {
             margin: 50px auto;
         }
 
-        h1, h2 {
-            font-size: large;
+        h1, h2, h3 {
+            font-size: larger;
             font-weight: bold;
             padding: 10px 0;
         }
 
         h2 {
+            font-size: large;
+        }
+
+        h3 {
             font-size: medium;
         }
 
         .hidden {
             display: none;
         }
+
+        .result-holder {
+            margin: 5px 0;
+
+            div {
+                padding: 5px;
+            }
+        
+            .dotted-border {
+                border: 1px dotted $baseColor;
+            }
+        }
+
+
         
         @media(max-width: 850px) {
             section {

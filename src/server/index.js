@@ -22,6 +22,7 @@ app.get("/api", (req, res) => {
     fetch(`https://api.meaningcloud.com/sentiment-2.1?url=${req.query.url}&key=${process.env.API_KEY}`)
         .then(data => data.json())
         .then(data => {
+            
             if (data.status.msg != "OK") {
                 res.send(data.status);
             }

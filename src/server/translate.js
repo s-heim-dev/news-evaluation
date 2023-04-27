@@ -45,69 +45,70 @@ function getIrony(value) {
     }
 }
 
-function translatePolarityTerm(obj) {
-    obj.sentimented_concept_list.forEach(val => translateConceptOrEntity(val));
+function translateOrCreate(arr, fn) {
+    if (!arr) {
+        return [];
+    }
 
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] = fn(arr[i]);
+    }
+
+    return arr;
+}
+
+function translatePolarityTerm(obj) {
     return {
         text: obj.text,
         confidence: getConfidence(obj.confidence),
         polarity: getPolarity(obj.score_tag),
-        concept_list: obj.sentimented_concept_list
+        concept_list: translateOrCreate(obj.sentimented_concept_list, translateConceptOrEntity)
     }
 }
 
 function translateConceptOrEntity(obj) {
     return {
         form: obj.form,
-        type: obj.type.substring(3).replaceAll(">", " / "),
+        type: obj.type.substring(4).replaceAll(">", " / "),
         polarity: getPolarity(obj.score_tag)
     }
 }
 
 function translateSegment(obj) {
-    obj.sentimented_entity_list.forEach(val => translateConceptOrEntity(val));
-    obj.polarity_term_list.forEach(val => translatePolarityTerm(val));
-
     return {
         text: obj.text,
         type: obj.segment_type,
         confidence: getConfidence(obj.confidence),
         polarity: getPolarity(obj.score_tag),
         agreement: getAgreement(obj.agreement),
-        entity_list: obj.sentimented_entity_list,
-        polarity_term_list: obj.polarity_term_list
+        entity_list: translateOrCreate(obj.sentimented_entity_list, translateConceptOrEntity),
+        polarity_list: translateOrCreate(obj.polarity_term_list, translatePolarityTerm)
     }
 }
 
 function translateSentence(obj) {
-    obj.segment_list.forEach(val => translateSegment(val));
-    obj.sentimented_entity_list.forEach(val => translateConceptOrEntity(val));
-    obj.sentimented_concept_list.forEach(val => translateConceptOrEntity(val));
-
     return {
         text: obj.text,
         confidence: getConfidence(obj.confidence),
         polarity: getPolarity(obj.score_tag),
         agreement: getAgreement(obj.agreement),
-        segment_list: obj.segment_list,
-        entity_list: obj.sentimented_entity_list,
-        concept_list: obj.sentimented_concept_list
+        segment_list: translateOrCreate(obj.segment_list, translateSegment),
+        entity_list: translateOrCreate(obj.sentimented_entity_list, translateConceptOrEntity),
+        concept_list: translateOrCreate(obj.sentimented_concept_list, translateConceptOrEntity)
     }
 }
 
 function translateElement(obj) {
-    obj.sentence_list.forEach(val => translateSentence(val));
-    obj.sentimented_entity_list.forEach(val => translateConceptOrEntity(val));
-    obj.sentimented_concept_list.forEach(val => translateConceptOrEntity(val));
-
     return {
         polarity: getPolarity(obj.score_tag),
         agreement: getAgreement(obj.agreement),
         subjectivity: getSubjectivity(obj.subjectivity),
         confidence: getConfidence(obj.confidence),
         irony: getIrony(obj.irony),
-        sentence_list: obj.sentence_list,
-        entity_list: obj.sentimented_entity_list,
-        concept_list: obj.sentimented_concept_list
+        sentence_list: translateOrCreate(obj.sentence_list, translateSentence),
+        entity_list: translateOrCreate(obj.sentimented_entity_list, translateConceptOrEntity),
+        concept_list: translateOrCreate(obj.sentimented_concept_list, translateConceptOrEntity)
     }
 }
+
+module.exports = translateElement
