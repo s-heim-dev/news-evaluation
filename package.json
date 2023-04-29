@@ -5,8 +5,7 @@
   "scripts": {
     "start": "node src/server/index.js",
     "build-prod": "webpack --config webpack.prod.js",
-    "build-dev": "webpack-dev-server  --config webpack.dev.js --open",
-    "test": "jest"
+    "build-dev": "webpack-dev-server  --config webpack.dev.js --open"
   },
   "keywords": [],
   "author": "",
@@ -29,7 +28,6 @@
     "copy-webpack-plugin": "^6.4.1",
     "css-loader": "^4.0.0",
     "html-webpack-plugin": "^4.0.0",
-    "jest": "^29.5.0",
     "mini-css-extract-plugin": "^1.6.0",
     "node-sass": "^7.0.0",
     "optimize-css-assets-webpack-plugin": "^6.0.0",
