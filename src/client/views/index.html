@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
     <head>
         <meta charset="utf-8">
         <title>News Evaluation</title>
@@ -22,13 +23,14 @@
                     <p>Enter a link to a news article to perform sentiment analysis:</p>
                     <input id="article" type="text" name="input" value="" placeholder="URL to News Article...">
                     <p class="error"></p>
-                    <input type="submit" name="" value="Request Analysis" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
+                    <input type="submit" name="" value="Request Analysis" onclick="return Client.handleSubmit(event)"
+                        onsubmit="return handleSubmit(event)">
                 </form>
-            <section>
+                <section>
 
-            <section id="results">
-                <h2 class="hidden">Results:</h2>
-            </section>
+                    <section id="results">
+                        <h2 class="hidden">Results:</h2>
+                    </section>
         </main>
 
         <footer>
@@ -43,4 +45,5 @@
             }
         </script>
     </body>
+
 </html>

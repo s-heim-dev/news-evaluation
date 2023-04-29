@@ -11,3 +11,11 @@
         border: 1px dotted $baseColor;
     }
 }
+
+.pending {
+    cursor: wait;
+}
+
+.pending * {
+    cursor: wait;
+}

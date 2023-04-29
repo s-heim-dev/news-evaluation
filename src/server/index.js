@@ -10,7 +10,7 @@ const port = 3000;
 
 app.use(express.static('dist'))
 
-app.get('/', (req, res) => {
+app.get('/', (_, res) => {
     res.sendFile('dist/index.html')
 })
 
@@ -22,12 +22,13 @@ app.get("/api", (req, res) => {
     fetch(`https://api.meaningcloud.com/sentiment-2.1?url=${req.query.url}&key=${process.env.API_KEY}`)
         .then(data => data.json())
         .then(data => {
-            
             if (data.status.msg != "OK") {
                 res.send(data.status);
             }
             else {
-                res.send(translate(data));
+                const result = translate(data);
+                console.log(`sent analysis for ${req.query.url}`);
+                res.send(result);
             }
         })
         .catch(err => res.send(err));

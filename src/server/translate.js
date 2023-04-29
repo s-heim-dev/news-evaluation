@@ -2,7 +2,7 @@ function getPolarity(value) {
     switch (value) {
         case "P+":
             return "strong positive";
-        case "P": 
+        case "P":
             return "positive";
         case "NEU":
             return "neutral";
@@ -69,7 +69,7 @@ function translatePolarityTerm(obj) {
 function translateConceptOrEntity(obj) {
     return {
         form: obj.form,
-        type: obj.type.substring(4).replaceAll(">", " / "),
+        type: obj.type,
         polarity: getPolarity(obj.score_tag)
     }
 }
