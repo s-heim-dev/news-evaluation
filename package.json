@@ -20,7 +20,8 @@
     "webpack-cli": "^4.0.0",
     "glob-parent": ">=5.1.2",
     "semver": ">=7.5.2",
-    "postcss": ">=8.4.31"
+    "postcss": ">=8.4.31",
+    "browserify-sign": ">=4.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.5.0",
@@ -41,7 +42,8 @@
     "workbox-webpack-plugin": "^6.5.4",
     "glob-parent": ">=5.1.2",
     "semver": ">=7.5.2",
-    "postcss": ">=8.4.31"
+    "postcss": ">=8.4.31",
+    "browserify-sign": ">=4.2.2"
   },
   "overrides": {
     "glob-parent@<5.1.2": "^5.1.2"
